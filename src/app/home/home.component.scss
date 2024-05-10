@@ -1,0 +1,15 @@
+input,select {
+    border: 1px solid #7e7e7e90;
+    padding: .5rem;
+    border-radius: 8px;
+}
+
+input[type="checkbox"] {
+    padding: 1rem;
+}
+
+.plus {
+    width: -moz-fit-content;
+    width: fit-content;
+    height: fit-content;
+}
