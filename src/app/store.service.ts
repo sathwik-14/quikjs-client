@@ -177,5 +177,37 @@ export class StoreService {
       }
     },
   ]);
+
+  presets = [
+    {name:'beginner',desc:'Best for personal projects and creating CRUD apis',color:'grey'},
+    {name:'balanced',desc:'Best for personal, production grade backends with support for custom api',color:'green'},
+    {name:'enterprise',desc:'Batteries included, craft as per your need',color:'violet'},
+  ];
+
+  configs = {
+    'beginner': {
+      logging: false,
+      error_handling: false,
+      production: false,
+      tools: ['none'],
+      authentication: false,
+    },
+    'balanced': {
+      logging: true,
+      error_handling: true,
+      production: false,
+      tools: ['none'],
+      authentication: false,
+    },
+    'enterprise': {
+      logging: true,
+      error_handling: true,
+      production: true,
+      tools: ['none'],
+      authentication: true,
+    },
+  }
+
+
   constructor() {}
 }

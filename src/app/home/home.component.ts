@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import types from '../constants';
 import { TemplateService } from '../template.service';
 import { StoreService } from '../store.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -20,20 +21,10 @@ export class HomeComponent {
   tables: any[] = [];
   datatypes:any = types;
 
-  constructor(readonly samples: TemplateService,public store:StoreService) {
+  constructor(readonly samples: TemplateService,public store:StoreService,public router:Router) {
     this.sampleData = samples.samples;
   }
 
-  saveProjectDetails(projectData: any) {
-    console.log(projectData.value);
-    this.showProjectForm = true;
-    this.store.dataStore().push(projectData.value)
-  }
-
-  getProjectDetails(index:number) {
-    console.log(this.store.dataStore()[index])
-    this.showSchemaForm = true;
-  }
 
   addTable() {
     this.tables.unshift({ name: '', junctionTable: false, fields: [] });

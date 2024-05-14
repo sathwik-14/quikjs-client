@@ -1,0 +1,21 @@
+<div class="flex gap-2">
+    @for (item of store.dataStore();let i=$index;track item) {
+      <div
+      (keydown)="getProjectDetails(i)"
+      (click)="getProjectDetails(i)"
+        class="p-3 rounded-2xl border plus cursor-pointer hover:border-blue-400 flex flex-col gap-1"
+      >
+        <div class="font-bold text-lg">{{ item.project_name }}</div>
+        <div class="text-slate-400">{{ item.project_description }}</div>
+        <div class="text-green-400">{{ item.orm }}</div>
+        <div class="text-violet-400">{{ item.database }}</div>
+      </div>
+    }
+    <div
+      (click)="router.navigate(['projects/new'])"
+      class="p-3 rounded-2xl border plus cursor-pointer hover:bg-blue-400 hover:text-white flex items-center"
+      title="create project"
+    >
+      <i class="bx bx-plus bx-lg"></i>
+    </div>
+  </div>
