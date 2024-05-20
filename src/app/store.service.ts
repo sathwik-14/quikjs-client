@@ -10,6 +10,12 @@ export class StoreService {
       project_description: 'test project',
       orm: 'sequelize',
       database: 'mysql',
+      logging: false,
+      error_handling: false,
+      production: false,
+      tools: ['none'],
+      api_documentation:false,
+      authentication: false,
       schema: {
         users: [
           {

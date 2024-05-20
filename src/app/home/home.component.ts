@@ -25,6 +25,10 @@ export class HomeComponent {
     this.sampleData = samples.samples;
   }
 
+  navigate(path:string){
+    this.router.navigate([path])
+  }
+
 
   addTable() {
     this.tables.unshift({ name: '', junctionTable: false, fields: [] });

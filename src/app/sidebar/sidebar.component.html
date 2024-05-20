@@ -1,0 +1,5 @@
+<div class="sidebar-container h-[calc(100svh-60px)] border-r p-5 container">
+    @for (item of sections; track $index) {
+        <p class="text md p-2 my-2 rounded-md cursor-pointer {{currentSection == $index?'ring':''}}">{{item.name | titlecase}}</p>
+    }
+</div>

@@ -1,6 +1,7 @@
-<ng-container>
+<div class="p-5 container flex">
+  <form class="p-4 flex flex-col gap-4 w-100" #projectForm="ngForm">
   <h1 class="text-xl mt-3 font-medium">Create new project</h1>
-  <form class="p-4 flex flex-wrap gap-4 items-center" #projectForm="ngForm">
+  <div class="form-fields-group">
     <div class="form-field">
       <label for="project_name">Name : </label>
       <input
@@ -9,7 +10,8 @@
         title="project_name"
         placeholder="Enter project name"
         class="form-control"
-        ngModel
+        [(ngModel)]="projectDetails.name"
+        maxlength="20"
         required
       />
     </div>
@@ -21,13 +23,12 @@
         title="project_description"
         placeholder="Enter your project description"
         class="form-control"
-        ngModel
-        required
+        [(ngModel)]="projectDetails.description"
       />
     </div>
     <div class="form-field">
       <label for="orm">Select ORM: </label>
-      <select name="orm" title="orm" class="form-control" ngModel required>
+      <select name="orm" title="orm" class="form-control" [(ngModel)]="projectDetails.orm" required>
         <option value="sequelize">sequelize</option>
         <option value="prisma">prisma</option>
       </select>
@@ -38,34 +39,18 @@
         name="database"
         title="database"
         class="form-control"
-        ngModel
+        [(ngModel)]="projectDetails.database"
         required
       >
         <option value="mysql">mysql</option>
         <option value="postgres">postgresql</option>
       </select>
     </div>
-    <div>
-      <button
-        class="p-2 rounded-md bg-red-400 hover:bg-red-600 text-white"
-        (click)="projectForm.reset()"
-      >
-        Clear
-      </button>
-      <button
-        class="p-2 ml-2 rounded-md bg-blue-400 disabled:cursor-not-allowed hover:bg-blue-600 text-white"
-        [disabled]="projectForm.invalid"
-        (click)="saveProjectDetails(projectForm)"
-      >
-        Save
-      </button>
-    </div>
-  </form>
-</ng-container>
+  </div>
 <hr />
 <ng-container>
   <h1 class="text-xl my-3 font-medium">Configure application</h1>
-  <div class="flex gap-3 items-center mb-4">
+  <!-- <div class="flex gap-3 items-center mb-4">
     @for (preset of presets; track preset ;let i = $index) {
       <div class="p-3 flex flex-col gap-3 border hover:ring rounded-xl hover:ring-green-400 hover:cursor-pointer"
       [class]="selectedPreset == i?'border-green-600':''"
@@ -74,7 +59,29 @@
         <div class="desc">{{ preset.desc }}</div>
       </div>
     }
+  </div> -->
+  <div class="form-fields-group">
+  <div class="form-field">
+    <label for="logging">Logging: </label>
+    <input [(ngModel)]="projectDetails.logging" type="checkbox" name="logging" id="logging">
   </div>
+  <div class="form-field">
+    <label for="authentication">Authentication: </label>
+    <input [(ngModel)]="projectDetails.authentication" type="checkbox" name="authentication" id="authentication">
+  </div>
+  <div class="form-field">
+    <label for="api_documentation">Api documentation: </label>
+    <input [(ngModel)]="projectDetails.api_documentation" type="checkbox" name="api_documentation" id="api_documentation">
+  </div>
+  <div class="form-field">
+    <label for="rbac">RBAC (role based authentication): </label>
+    <input [(ngModel)]="projectDetails.rbac" type="checkbox" name="rbac" id="rbac">
+  </div>
+  <!-- <div class="form-field">
+    <label for="Logging">Logging: </label>
+    <input type="checkbox" name="Logging" id="Logging">
+  </div> -->
+</div>
 </ng-container>
 <hr />
 <ng-container>
@@ -85,3 +92,32 @@
     <div class="flex gap-3 p-5 border rounded-xl">choose from templates</div>
   </div>
 </ng-container>
+<div>
+  <button
+    class="p-2 rounded-md bg-red-400 hover:bg-red-600 text-white"
+    (click)="projectForm.reset()"
+  >
+    Clear
+  </button>
+  <button
+    class="p-2 ml-2 rounded-md bg-blue-400 disabled:cursor-not-allowed hover:bg-blue-600 text-white"
+    [disabled]="projectForm.invalid"
+    (click)="saveProjectDetails(projectForm)"
+  >
+    Save
+  </button>
+</div>
+<button
+class="p-2 ml-2 rounded-md bg-blue-400 disabled:cursor-not-allowed hover:bg-blue-600 text-white"
+[disabled]="projectForm.invalid"
+(click)="generate(projectForm)"
+>
+Generate
+</button>
+</form>
+<!-- <div class="w-100 flex flex-col">
+  <p class="text-lg underline">Result</p>
+  {{projectDetails | json}}
+</div> -->
+</div>
+

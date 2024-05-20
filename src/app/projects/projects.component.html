@@ -1,4 +1,6 @@
-<div class="flex gap-2">
+<div class="flex gap-3">
+  <app-sidebar></app-sidebar>
+<div class="flex gap-2 p-5 container h-full">
     @for (item of store.dataStore();let i=$index;track item) {
       <div
       (keydown)="getProjectDetails(i)"
@@ -12,10 +14,11 @@
       </div>
     }
     <div
-      (click)="router.navigate(['projects/new'])"
+      (click)="router.navigate(['dashboard/projects/new'])"
       class="p-3 rounded-2xl border plus cursor-pointer hover:bg-blue-400 hover:text-white flex items-center"
       title="create project"
     >
       <i class="bx bx-plus bx-lg"></i>
     </div>
   </div>
+</div>

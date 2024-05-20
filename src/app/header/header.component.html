@@ -1,7 +1,24 @@
-<div class="h-[60px] w-[100vw] bg-slate-800 flex items-center p-2 gap-4 text-white">
-    <div class="flex gap-4">
-    <div class="link" (click)="navigate('projects')">projects</div>
-    <div class="link">scheamas</div>
+<div class="h-[60px] w-[100vw] flex items-center p-2 gap-4 border border-b-1">
+  <div class="flex gap-4 items-center w-full">
+    <div
+      class="logo font-bold text-xl cursor-pointer"
+      (click)="route.navigate(['/'])"
+    >
+      QUIKJS
     </div>
-    <div class="logo ml-auto">QUIKJS</div>
+    <div class="ml-auto flex items-center gap-4">
+      <!-- <div class="hover:ring hover:ring-offset-8 rounded-3xl cursor-pointer">Become a sponser</div> -->
+      <a
+        href="https://github.com/sathwik-14/quikjs"
+        target="_blank"
+        rel="noopener"
+        class="flex items-center gap-2"
+      >
+        <i class="bx bxl-github bx-sm"></i>
+        {{ repoDetails?.stargazers_count || 2 }} stars
+      </a>
+      <!-- <div class="btn p-2 cursor-pointer">login</div>
+        <div class="btn p-2 border rounded-md bg-gradient-to-r from-slate-300 hover:transition-all ease-in duration-75 hover:cursor-pointer hover:to-blue-100">signup</div>
+    --></div>
+  </div>
 </div>
