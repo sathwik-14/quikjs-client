@@ -1,0 +1,29 @@
+<div class="flex gap-2">
+  <!-- file-explorer.component.html -->
+  <div *ngIf="node" class="mb-1 w-full">
+    <div *ngIf="node.children; else fileContent">
+      <div
+        class="flex gap-2 items-center cursor-pointer"
+        (click)="node.expand = !node.expand"
+      >
+        <i class="bx {{!node.expand?'bx-chevron-right':'bx-chevron-down'}}"></i>&nbsp;
+        <i class="bx bx-folder"></i>&nbsp;
+        <div>{{ node.name }}</div>
+      </div>
+      <ng-container *ngIf="node.expand">
+        <div class="ml-5" *ngFor="let child of getChildren(node)">
+          <app-explorer [node]="child"></app-explorer>
+        </div>
+      </ng-container>
+    </div>
+    <ng-template #fileContent>
+      <div
+        class="cursor-pointer p-1 hover:bg-slate-100 {{_content.currentNode().name == node.name?'bg-slate-200':''}} rounded-sm ring-offset-4"
+        (click)="setContent(node)"
+      >
+      <i class="bx bx-file-blank"></i>&nbsp;
+        {{ node.name }}
+      </div>
+    </ng-template>
+  </div>
+</div>

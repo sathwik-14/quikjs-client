@@ -11,6 +11,10 @@
     font-weight: 400;
     font-style: normal;}
 
+body {
+    overflow-x: hidden;
+}
+
 input,select {
     border: 1px solid #7e7e7e90;
     padding: .5rem;
@@ -21,4 +25,9 @@ input[type="checkbox"] {
     padding: 1rem;
     width: 15px;
     height: 15px;
+}
+
+.CodeMirror {
+    width: 100% !important;
+    height: 100% !important;
 }
