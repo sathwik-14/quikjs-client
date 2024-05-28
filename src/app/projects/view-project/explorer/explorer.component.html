@@ -6,8 +6,8 @@
         class="flex gap-2 items-center cursor-pointer"
         (click)="node.expand = !node.expand"
       >
-        <i class="bx {{!node.expand?'bx-chevron-right':'bx-chevron-down'}}"></i>&nbsp;
-        <i class="bx bx-folder"></i>&nbsp;
+        <i class="codicon {{!node.expand?'codicon-chevron-right':'codicon-chevron-down'}}"></i>&nbsp;
+        <i class="codicon codicon-{{!node.expand?'folder':'folder-opened'}}"></i>&nbsp;
         <div>{{ node.name }}</div>
       </div>
       <ng-container *ngIf="node.expand">
@@ -21,7 +21,7 @@
         class="cursor-pointer p-1 hover:bg-slate-100 {{_content.currentNode().name == node.name?'bg-slate-200':''}} rounded-sm ring-offset-4"
         (click)="setContent(node)"
       >
-      <i class="bx bx-file-blank"></i>&nbsp;
+      <i class="codicon codicon-file-code"></i>&nbsp;
         {{ node.name }}
       </div>
     </ng-template>

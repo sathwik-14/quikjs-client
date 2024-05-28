@@ -5,10 +5,9 @@ import { ProjectsComponent } from './projects.component';
 import { ViewProjectComponent } from './view-project/view-project.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'projects', pathMatch: 'full'},
-  {path:'projects',component:ProjectsComponent},
-  {path:'projects/new',component:NewProjectComponent},
-  {path:'projects/view',component:ViewProjectComponent}
+  {path:'',component:ProjectsComponent},
+  {path:'new',component:NewProjectComponent},
+  {path:'view',component:ViewProjectComponent}
 ];
 
 @NgModule({
