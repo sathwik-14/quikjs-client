@@ -26,6 +26,7 @@
     "@omnedia/ngx-meteors": "^1.0.1",
     "@omnedia/ngx-number-ticker": "^1.1.0",
     "@vscode/codicons": "^0.0.36",
+    "angular-cli-ghpages": "^2.0.1",
     "angular-oauth2-oidc": "^17.0.2",
     "boxicons": "^2.1.4",
     "file-saver": "^2.0.5",
