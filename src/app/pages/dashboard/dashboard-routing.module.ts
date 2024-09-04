@@ -15,12 +15,12 @@ const routes: Routes = [
       {
         path: 'projects',
         loadChildren: () =>
-          import('../projects/projects.module').then((e) => e.ProjectsModule),
+          import('../../projects/projects.module').then((e) => e.ProjectsModule),
       },
       {
         path: 'schemas',
         loadComponent: () =>
-          import('../schemas/schemas.component').then((e) => e.SchemasComponent),
+          import('../../schemas/schemas.component').then((e) => e.SchemasComponent),
       }
     ]
   }

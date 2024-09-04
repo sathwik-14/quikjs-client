@@ -1,17 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import types from '../constants';
-import { TemplateService } from '../template.service';
-import { StoreService } from '../store.service';
 import { Router, RouterModule } from '@angular/router';
+import types from '../../constants';
+import { TemplateService } from '../../template.service';
+import { StoreService } from '../../store.service';
+import { FeaturesComponent } from './features/features.component';
+import { NgxBorderBeamComponent } from '@omnedia/ngx-border-beam';
+import { NgxMeteorsComponent } from '@omnedia/ngx-meteors';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, FeaturesComponent, NgxBorderBeamComponent, NgxMeteorsComponent ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   title = 'quikjs-client';
@@ -19,16 +22,19 @@ export class HomeComponent {
   sampleData: any;
   showSchemaForm = false;
   tables: any[] = [];
-  datatypes:any = types;
+  datatypes: any = types;
 
-  constructor(readonly samples: TemplateService,public store:StoreService,public router:Router) {
+  constructor(
+    readonly samples: TemplateService,
+    public store: StoreService,
+    public router: Router,
+  ) {
     this.sampleData = samples.samples;
   }
 
-  navigate(path:string){
-    this.router.navigate([path])
+  navigate(path: string) {
+    this.router.navigate([path]);
   }
-
 
   addTable() {
     this.tables.unshift({ name: '', junctionTable: false, fields: [] });
@@ -41,7 +47,7 @@ export class HomeComponent {
       primaryKey: false,
       autoIncrement: false,
       defaultValue: '',
-      isUnique:false,
+      isUnique: false,
       isNull: false,
       foreignKey: false,
       refTable: '',
@@ -50,7 +56,7 @@ export class HomeComponent {
     });
   }
 
-  removeTable(index:number) {
-    this.tables.splice(index)
+  removeTable(index: number) {
+    this.tables.splice(index);
   }
 }

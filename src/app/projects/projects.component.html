@@ -3,7 +3,7 @@
     <div
       (keydown)="getProjectDetails(i)"
       (click)="getProjectDetails(i)"
-      class="p-3 rounded-2xl border plus cursor-pointer hover:border-blue-400 flex flex-col gap-1"
+      class="p-3 rounded-2xl border plus cursor-pointer hover:border-[#b55ef1] flex flex-col gap-1"
     >
       <div class="font-bold text-lg">{{ item.project_name }}</div>
       <div class="text-slate-400">{{ item.project_description }}</div>
@@ -13,7 +13,7 @@
   }
   <div
     (click)="router.navigate(['dashboard/projects/new'])"
-    class="p-3 rounded-2xl border plus cursor-pointer hover:bg-blue-400 hover:text-white flex items-center"
+    class="p-3 rounded-2xl border plus cursor-pointer hover:bg-[#b55ef1] hover:text-white flex items-center"
     title="create project"
   >
     <i class="bx bx-plus bx-lg"></i>

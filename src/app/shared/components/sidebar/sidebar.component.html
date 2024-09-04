@@ -1,0 +1,9 @@
+<div
+  class="bg-white sidebar-container h-[calc(100svh-60px)] border-r p-5 container max-w-full"
+  [@slideInOut]="_sidebar.expanded | async">
+  @for (item of sections; track $index) {
+  <p (click)="currentSection = $index;_route.navigate([item.link])"
+    class="text md p-2 my-2 rounded-md cursor-pointer {{currentSection == $index?'text-slate-800':'text-slate-400'}}">
+    {{item.name | titlecase}}</p>
+  }
+</div>

@@ -2,6 +2,7 @@
   class="h-[60px] sticky top-0 bg-white z-10 flex items-center p-2 gap-4 border border-b-1"
 >
   <div class="flex gap-4 items-center w-full">
+    <i *ngIf="auth.isLoggedIn" (click)="_sidebar.toggleSidebar()" class='bx bx-menu-alt-left bx-md md:hidden cursor-pointer'></i>
     <div
       class="logo font-bold text-xl cursor-pointer"
       (click)="route.navigate(['/'])"
@@ -17,12 +18,13 @@
         class="flex items-center gap-2"
       >
         <i class="bx bxl-github bx-sm"></i>
-        {{ repoDetails?.stargazers_count || 2 }} stars
+        <om-number-ticker [countTo]="repoDetails?.stargazers_count || 2"></om-number-ticker> stars
       </a>
-        <ng-container *ngIf="auth.user$ | async as user;else loginbutton">
-          <div>{{ user.name }}</div>
+        <ng-container *ngIf="auth.user()?.name;else loginbutton">
+          <div>{{ auth.user()?.name }}</div>
+          <img [src]="auth.user()?.picture" width="30" height="30" alt="">
           <!-- <div>{{ user.email }}</div> -->
-          <div (click)="auth.logout({ logoutParams: { returnTo: redirectUri } })" class="p-2 cursor-pointer border border-red-200 rounded-md">Logout</div>
+          <div (click)="logout({ logoutParams: { returnTo: redirectUri } })" class="p-2 cursor-pointer border border-red-200 rounded-md">Logout</div>
         </ng-container>
         <ng-template #loginbutton>
         <app-github-login></app-github-login>

@@ -1,0 +1,33 @@
+.hero-container {
+    // background-image: url('/../../../assets/bg.avif');
+    background-size: cover;
+    width: 100vw;
+    filter: hue-rotate(45deg);
+}
+
+.om-border-beam[_ngcontent-ng-c3242406239] {
+  border: none !important;
+}
+
+.container-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  height: 350px;
+  background: transparent;
+  text-align: center;
+
+  .border-beam-title {
+    font-weight: bold;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(
+      to bottom,
+      #fff 0,
+      rgba(255, 255, 255, 0.1) 95%
+    );
+  }
+}
+

@@ -1,5 +1,5 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations'
 import { routes } from './app.routes';
   import { provideHttpClient } from '@angular/common/http';
@@ -7,7 +7,7 @@ import { provideAuth0 } from '@auth0/auth0-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, withViewTransitions()),
     provideAnimations(),
     provideHttpClient(),
     provideAuth0({
@@ -16,6 +16,6 @@ export const appConfig: ApplicationConfig = {
       authorizationParams: {
         redirect_uri: window.location.origin,
       },
-    })  
+    })
   ],
 };

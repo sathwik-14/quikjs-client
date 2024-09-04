@@ -1,10 +1,9 @@
-import { Component, signal, Signal } from '@angular/core';
-import { GraphComponent, NgxGraphModule, Node } from '@swimlane/ngx-graph';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-schemas',
   standalone: true,
-  imports: [NgxGraphModule],
+  imports: [],
   templateUrl: './schemas.component.html',
   styleUrl: './schemas.component.scss',
 })
@@ -30,25 +29,11 @@ export class SchemasComponent {
     ]
   }
 
-  zoomOut(canvas:GraphComponent) {
-    if (canvas.zoomLevel <= 0) return
-    console.log(canvas.zoomLevel);
-    canvas.zoom(0.1)
-    console.log(canvas.zoomLevel);
-  }
-
-  zoomIn(canvas:GraphComponent) {
-    if (canvas.zoomLevel >= 4) return
-    console.log(canvas.zoomLevel);
-    canvas.zoom(0.03)
-    console.log(canvas.zoomLevel);
-  }
-
   addUser() {
-    const newNode:Node = {
+    const newNode:any = {
       id: 'random',
       label: this.table.name,
-      
+
     }
     this.addNode(newNode)
   }
@@ -56,7 +41,7 @@ export class SchemasComponent {
   addNode(node:Node) {
     console.log('pushing');
     console.log(this.nodes);
-    
+
     this.nodes.push(node)
     console.log(this.nodes);
     this.nodes = [...this.nodes]

@@ -2,10 +2,7 @@
   <!-- file-explorer.component.html -->
   <div *ngIf="node" class="mb-1 w-full">
     <div *ngIf="node.children; else fileContent">
-      <div
-        class="flex gap-2 items-center cursor-pointer"
-        (click)="node.expand = !node.expand"
-      >
+      <div class="flex gap-1 items-center cursor-pointer hover:bg-slate-100 " (click)="node.expand = !node.expand">
         <i class="codicon {{!node.expand?'codicon-chevron-right':'codicon-chevron-down'}}"></i>&nbsp;
         <i class="codicon codicon-{{!node.expand?'folder':'folder-opened'}}"></i>&nbsp;
         <div>{{ node.name }}</div>
@@ -18,10 +15,9 @@
     </div>
     <ng-template #fileContent>
       <div
-        class="cursor-pointer p-1 hover:bg-slate-100 {{_content.currentNode().name == node.name?'bg-slate-200':''}} rounded-sm ring-offset-4"
-        (click)="setContent(node)"
-      >
-      <i class="codicon codicon-file-code"></i>&nbsp;
+        class="cursor-pointer p-1 hover:bg-slate-100 {{_content.currentNode().name == node.name?'bg-slate-200':'text-slate-600'}} rounded-sm ring-offset-4"
+        (click)="setContent(node)">
+        <i class="codicon codicon-file-code"></i>&nbsp;
         {{ node.name }}
       </div>
     </ng-template>

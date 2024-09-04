@@ -1,0 +1,47 @@
+$text-color: #b55ef1;
+$surface-background: grey;
+
+.marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: 0.75rem;
+  border: 1px solid $text-color;
+  padding: 2rem;
+  box-shadow: 10px 1px 10px #09349923;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.marquee-gradient {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 33%;
+
+  &.left {
+    left: 0;
+    background-image: linear-gradient(to right,
+        $surface-background,
+        transparent);
+  }
+
+  &.right {
+    right: 0;
+    background-image: linear-gradient(to left,
+        var(--surface-background),
+        transparent);
+  }
+}
+
+img {
+  max-height: 50px;
+  aspect-ratio: 16/9;
+}

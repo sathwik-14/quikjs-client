@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+declare function main(): any;
+
 @Component({
   selector: 'app-new-project',
   standalone: true,
@@ -43,12 +45,17 @@ export class NewProjectComponent {
 
   generate(data: any) {
     console.log(data.value);
-    this._http.get('http://localhost:3001/generate').subscribe({
+
+    this._http.get('http://localhost:3000/generate').subscribe({
       next: (res) => {
         console.log(res);
-        this._router.navigate(['/projects/view']);
+        this._router.navigate(['dashboard/projects/view'], {
+          state: res,
+        });
       },
       error: (err) => console.log(err),
     });
+
+    // main();
   }
 }

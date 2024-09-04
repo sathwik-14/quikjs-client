@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { dashboardGuard } from './pages/dashboard/dashboard.guard';
+import { inject } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 
 export const routes: Routes = [
   {
@@ -13,8 +16,8 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () =>
-      import('./home/home.component').then((e) => e.HomeComponent),
+    loadChildren: () =>
+      import('./pages/home/home.module').then((e) => e.HomeModule),
   },
   {
     path: 'login',
@@ -23,13 +26,16 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
+    resolve: {
+      user: () => inject(AuthService).user$
+    },
+    canActivate: [dashboardGuard],
     loadChildren: () =>
-      import('./dashboard/dashboard.module').then((e) => e.DashboardModule),
+      import('./pages/dashboard/dashboard.module').then((e) => e.DashboardModule),
   },
-{
-  path:'**',
-  pathMatch: 'full',
-  redirectTo: 'home'
-}
-
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'home',
+  },
 ];
